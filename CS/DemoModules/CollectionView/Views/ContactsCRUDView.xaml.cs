@@ -31,7 +31,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
             DBContactService.Instance = new DBContactService(Path.Combine(FileSystem.CacheDirectory, "contacts.db"));
             DBContactService.Instance.InitCache();
             BindingContext = new ContactsCRUDViewModel();
-            Localizer.StringLoader = new MyStringLoader();
+            Localizer.DXStringLoader = new MyStringLoader();
         }
 
         void ItemClick(object sender, CollectionViewGestureEventArgs e) {

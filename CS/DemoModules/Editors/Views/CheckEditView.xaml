@@ -41,7 +41,7 @@
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Allow Indeterminate" Style="{StaticResource TextStyle}"/>
-                            <Switch IsToggled="{Binding AllowIndeterminateInput}" Style="{DynamicResource SwitchStyle}"/>
+                            <dx:DXSwitch IsChecked="{Binding AllowIndeterminateInput}" Style="{DynamicResource SwitchStyle}"/>
                         </StackLayout>
                     </StackLayout>
                     <dx:DXSeparator SideMargin="0"/>
@@ -58,7 +58,7 @@
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Accent Color" Style="{StaticResource TextStyle}"/>
-                            <Switch IsToggled="{Binding AllowCustomCheckedCheckBoxColor}" Style="{DynamicResource SwitchStyle}"/>
+                            <dx:DXSwitch IsChecked="{Binding AllowCustomCheckedCheckBoxColor}" Style="{DynamicResource SwitchStyle}"/>
                         </StackLayout>
 
                         <dx:ComboBoxEdit

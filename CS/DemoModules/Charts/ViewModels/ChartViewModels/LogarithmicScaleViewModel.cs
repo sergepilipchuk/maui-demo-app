@@ -53,7 +53,7 @@ namespace DemoCenter.Maui.ViewModels {
         byte[] ReadBuffer() {
             using (Stream stream = GetType().Assembly.GetManifestResourceStream("Resources.sound.bin")) {
                 byte[] buffer = new byte[stream.Length];
-                stream.Read(buffer, 0, buffer.Length);
+                stream.ReadExactly(buffer);
                 return buffer;
             }
         }

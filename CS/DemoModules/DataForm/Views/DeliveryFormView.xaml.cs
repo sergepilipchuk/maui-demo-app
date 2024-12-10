@@ -1,16 +1,17 @@
 ﻿using System;
 using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.DemoModules.DataForm.ViewModels;
+using DevExpress.Maui.Core;
 using DevExpress.Maui.DataForm;
 using DevExpress.Maui.Editors;
 
 namespace DemoCenter.Maui.Views {
-    public partial class DeliveryFormView : AdaptivePage {
+    public partial class DeliveryFormView : DemoPage {
         public DeliveryFormView() {
             InitializeComponent();
             BindingContext = new DeliveryFormViewModel();
             dataForm.ValidateProperty += DataFormOnValidateProperty;
-            OrientationChanged += OnOrientationChanged;
+            ON.OrientationChanged(this, (x) => x.OnOrientationChanged());
         }
 
         void DataFormOnValidateProperty(object sender, DataFormPropertyValidationEventArgs e) {
@@ -28,8 +29,8 @@ namespace DemoCenter.Maui.Views {
             }
         }
 
-        void OnOrientationChanged(object sender, EventArgs e) {
-            ((DeliveryFormViewModel)this.BindingContext).Rotate(dataForm, Orientation);
+        void OnOrientationChanged() {
+            ((DeliveryFormViewModel)this.BindingContext).Rotate(dataForm, ON.Orientation(true, false));
         }
 
         void SubmitOnClicked(object sender, EventArgs e) {

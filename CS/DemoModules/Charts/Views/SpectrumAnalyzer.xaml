@@ -73,7 +73,7 @@
                             <dx:AxisLabel TextFormat="mm:ss.SSS" />
                         </dx:DateTimeAxisX.Label>
                         <dx:DateTimeAxisX.Range>
-                            <dx:DateTimeRange SideMargin="0" />
+                            <dx:DateRange SideMargin="0.0" />
                         </dx:DateTimeAxisX.Range>
                         <dx:DateTimeAxisX.Style>
                             <dx:AxisStyle MinorTickmarksVisible="True" MajorTickmarksVisible="True" MajorGridlinesVisible="True" />

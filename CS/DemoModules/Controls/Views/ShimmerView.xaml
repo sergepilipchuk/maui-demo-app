@@ -1,159 +1,199 @@
-<demo:AdaptivePage x:Class="DemoCenter.Maui.Views.ShimmerView"
-                   xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                   xmlns:dx="http://schemas.devexpress.com/maui"
-                   xmlns:demo="clr-namespace:DemoCenter.Maui.Demo;assembly=DemoCenter.Maui"
-                   xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-                   xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
-                   xmlns:local="clr-namespace:DemoCenter.Maui.Views"
-                   ios:Page.UseSafeArea="False">
+<demo:DemoPage
+    x:Class="DemoCenter.Maui.Views.ShimmerView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+    xmlns:dx="http://schemas.devexpress.com/maui"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo;assembly=DemoCenter.Maui"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+    ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="dx:ShimmerView" x:Key="ShimmerEffect">
-                <Setter Property="WaveWidth" Value="0.7"/>
-                <Setter Property="WaveOpacity" Value="0.8"/>
-                <Setter Property="WaveDuration" Value="0:0:0.8"/>
+            <Style x:Key="ShimmerEffect" TargetType="dx:ShimmerView">
+                <Setter Property="WaveWidth" Value="0.7" />
+                <Setter Property="WaveOpacity" Value="0.8" />
+                <Setter Property="WaveDuration" Value="0:0:0.8" />
             </Style>
 
-            <Style TargetType="dx:DXBorder" x:Key="ShimmerElementAction">
-                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}"/>
-                <Setter Property="CornerRadius" Value="25"/>
-                <Setter Property="WidthRequest" Value="100"/>
-                <Setter Property="HeightRequest" Value="100"/>
-                <Setter Property="BorderThickness" Value="0"/>
+            <Style x:Key="ShimmerElementAction" TargetType="dx:DXBorder">
+                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}" />
+                <Setter Property="CornerRadius" Value="25" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="HeightRequest" Value="100" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
-            <Style TargetType="dx:DXBorder" x:Key="ShimmerElementCard">
-                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}"/>
-                <Setter Property="CornerRadius" Value="25"/>
-                <Setter Property="WidthRequest" Value="250"/>
-                <Setter Property="HeightRequest" Value="150"/>
-                <Setter Property="BorderThickness" Value="0"/>
+            <Style x:Key="ShimmerElementCard" TargetType="dx:DXBorder">
+                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}" />
+                <Setter Property="CornerRadius" Value="25" />
+                <Setter Property="WidthRequest" Value="250" />
+                <Setter Property="HeightRequest" Value="150" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
-            <Style TargetType="Ellipse" x:Key="ShimmerElementAvatar">
-                <Setter Property="Fill" Value="{dx:ThemeColor SurfaceVariant}"/>
-                <Setter Property="WidthRequest" Value="60"/>
-                <Setter Property="HeightRequest" Value="60"/>
+            <Style x:Key="ShimmerElementAvatar" TargetType="Ellipse">
+                <Setter Property="Fill" Value="{dx:ThemeColor SurfaceVariant}" />
+                <Setter Property="WidthRequest" Value="60" />
+                <Setter Property="HeightRequest" Value="60" />
             </Style>
-            <Style TargetType="dx:DXBorder" x:Key="ShimmerElementRow">
-                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}"/>
-                <Setter Property="CornerRadius" Value="12"/>
-                <Setter Property="HeightRequest" Value="24"/>
-                <Setter Property="BorderThickness" Value="0"/>
-            </Style>
-
-            <Style TargetType="dx:DXBorder" x:Key="ElementAction">
-                <Setter Property="CornerRadius" Value="25"/>
-                <Setter Property="WidthRequest" Value="100"/>
-                <Setter Property="HeightRequest" Value="90"/>
-                <Setter Property="BorderThickness" Value="0"/>
-            </Style>
-            <Style TargetType="Label" x:Key="TextAction">
-                <Setter Property="TextColor" Value="{AppThemeBinding Light=#101010, Dark=#FFFFFF}"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="FontSize" Value="15"/>
+            <Style x:Key="ShimmerElementRow" TargetType="dx:DXBorder">
+                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="HeightRequest" Value="24" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
 
-            <Style TargetType="dx:DXBorder" x:Key="ElementCard">
-                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}"/>
-                <Setter Property="CornerRadius" Value="12"/>
-                <Setter Property="WidthRequest" Value="240"/>
+            <Style x:Key="ElementAction" TargetType="dx:DXBorder">
+                <Setter Property="CornerRadius" Value="25" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="HeightRequest" Value="90" />
+                <Setter Property="BorderThickness" Value="0" />
             </Style>
-            <Style TargetType="Label" x:Key="TextCardTitle">
-                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurfaceVariant}"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="FontSize" Value="16"/>
-            </Style>
-            <Style TargetType="Label" x:Key="TextCardCaption">
-                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurfaceVariant}"/>
-                <Setter Property="LineBreakMode" Value="TailTruncation"/>
-                <Setter Property="FontSize" Value="12"/>
+            <Style x:Key="TextAction" TargetType="Label">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light=#101010, Dark=#FFFFFF}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="15" />
             </Style>
 
-            <Style TargetType="Label" x:Key="TextHeader">
-                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+            <Style x:Key="ElementCard" TargetType="dx:DXBorder">
+                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="WidthRequest" Value="240" />
             </Style>
-            <Style TargetType="Label" x:Key="TextUserName">
-                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
-                <Setter Property="FontSize" Value="14"/>
+            <Style x:Key="TextCardTitle" TargetType="Label">
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="16" />
             </Style>
-            <Style TargetType="Label" x:Key="TextUserCaption">
-                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurfaceVariant}"/>
-                <Setter Property="FontSize" Value="14"/>
+            <Style x:Key="TextCardCaption" TargetType="Label">
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+
+            <Style x:Key="TextHeader" TargetType="Label">
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="TextUserName" TargetType="Label">
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            <Style x:Key="TextUserCaption" TargetType="Label">
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
+                <Setter Property="FontSize" Value="14" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ScrollView BackgroundColor="{dx:ThemeColor Surface}">
+        <dx:DXScrollView BackgroundColor="{dx:ThemeColor Surface}">
             <VerticalStackLayout>
 
                 <dx:ShimmerView Style="{StaticResource ShimmerEffect}" IsLoading="{Binding DealersLoading}">
                     <dx:ShimmerView.Content>
-                        <Grid ColumnDefinitions="*,*,*" HeightRequest="120" Margin="0,24">
-                            <Grid RowDefinitions="*,Auto" Grid.Column="0" Margin="24,0,0,0">
-                                <dx:DXBorder Style="{StaticResource ElementAction}" BackgroundColor="{AppThemeBinding Light=#33FFCA67, Dark=#8AD7B08D}"/>
-                                <Image Source="bed" Margin="28"/>
-                                <Label Style="{StaticResource TextAction}" Grid.Row="1" Text="Hotels"/>
+                        <Grid
+                            ColumnDefinitions="*,*,*"
+                            HeightRequest="120"
+                            Margin="0,24">
+                            <Grid
+                                Grid.Column="0"
+                                RowDefinitions="*,Auto"
+                                Margin="24,0,0,0">
+                                <dx:DXBorder Style="{StaticResource ElementAction}" BackgroundColor="{AppThemeBinding Light=#33FFCA67, Dark=#8AD7B08D}" />
+                                <Image Source="bed" Margin="28" />
+                                <Label
+                                    Grid.Row="1"
+                                    Style="{StaticResource TextAction}"
+                                    Text="Hotels" />
                             </Grid>
 
-                            <Grid RowDefinitions="*,Auto" Grid.Column="1">
-                                <dx:DXBorder Style="{StaticResource ElementAction}" BackgroundColor="{AppThemeBinding Light=#24FF4A4A, Dark=#6BFFB2B2}"/>
-                                <Image Source="discont" Margin="28"/>
-                                <Label Style="{StaticResource TextAction}" Grid.Row="1" Text="Discount"/>
+                            <Grid Grid.Column="1" RowDefinitions="*,Auto">
+                                <dx:DXBorder Style="{StaticResource ElementAction}" BackgroundColor="{AppThemeBinding Light=#24FF4A4A, Dark=#6BFFB2B2}" />
+                                <Image Source="discont" Margin="28" />
+                                <Label
+                                    Grid.Row="1"
+                                    Style="{StaticResource TextAction}"
+                                    Text="Discount" />
                             </Grid>
 
-                            <Grid RowDefinitions="*,Auto" Grid.Column="2" Margin="0,0,24,0">
-                                <dx:DXBorder Style="{StaticResource ElementAction}" BackgroundColor="{AppThemeBinding Light=#3390D8F9, Dark=#33CDEFFF}"/>
-                                <Image Source="map" Margin="28"/>
-                                <Label Style="{StaticResource TextAction}" Grid.Row="1" Text="Map"/>
+                            <Grid
+                                Grid.Column="2"
+                                RowDefinitions="*,Auto"
+                                Margin="0,0,24,0">
+                                <dx:DXBorder Style="{StaticResource ElementAction}" BackgroundColor="{AppThemeBinding Light=#3390D8F9, Dark=#33CDEFFF}" />
+                                <Image Source="map" Margin="28" />
+                                <Label
+                                    Grid.Row="1"
+                                    Style="{StaticResource TextAction}"
+                                    Text="Map" />
                             </Grid>
                         </Grid>
                     </dx:ShimmerView.Content>
                     <dx:ShimmerView.LoadingView>
-                        <Grid ColumnDefinitions="*,*,*" HeightRequest="100" Margin="0,24">
-                            <dx:DXBorder Style="{StaticResource ShimmerElementAction}" Grid.Column="0" Margin="24,0,0,0"/>
-                            <dx:DXBorder Style="{StaticResource ShimmerElementAction}" Grid.Column="1"/>
-                            <dx:DXBorder Style="{StaticResource ShimmerElementAction}" Grid.Column="2" Margin="0,0,24,0"/>
+                        <Grid
+                            ColumnDefinitions="*,*,*"
+                            HeightRequest="100"
+                            Margin="0,24">
+                            <dx:DXBorder
+                                Grid.Column="0"
+                                Style="{StaticResource ShimmerElementAction}"
+                                Margin="24,0,0,0" />
+                            <dx:DXBorder Grid.Column="1" Style="{StaticResource ShimmerElementAction}" />
+                            <dx:DXBorder
+                                Grid.Column="2"
+                                Style="{StaticResource ShimmerElementAction}"
+                                Margin="0,0,24,0" />
                         </Grid>
                     </dx:ShimmerView.LoadingView>
                 </dx:ShimmerView>
 
                 <dx:ShimmerView Style="{StaticResource ShimmerEffect}" IsLoading="{Binding DealersLoading}">
                     <dx:ShimmerView.Content>
-                        <dx:DXCollectionView HeightRequest="192" Orientation="Horizontal" ItemsSource="{Binding HouseItems}" IsScrollBarVisible="False">
+                        <dx:DXCollectionView
+                            HeightRequest="192"
+                            Orientation="Horizontal"
+                            ItemsSource="{Binding HouseItems}"
+                            IsScrollBarVisible="False">
                             <dx:DXCollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <dx:DXBorder Style="{StaticResource ElementCard}" Margin="24,4,4,4">
-                                        <VerticalStackLayout>
-                                            <Grid RowSpacing="0"
+                                        <VerticalStackLayout Spacing="6">
+                                            <Grid
+                                                RowSpacing="0"
                                                 ColumnSpacing="0"
                                                 Padding="0">
-                                                <Image HeightRequest="120"
+                                                <Image
+                                                    HeightRequest="120"
                                                     Source="{Binding Photo}"
-                                                    Aspect="AspectFill"/>
+                                                    Aspect="AspectFill" />
                                                 <dx:DXBorder
                                                     BackgroundColor="#8F000000"
                                                     HorizontalOptions="Start"
                                                     Margin="10"
                                                     VerticalOptions="End"
                                                     CornerRadius="15">
-                                                    <Label Text="{Binding Price, StringFormat='$ {0:N0}'}"
+                                                    <Label
+                                                        Text="{Binding Price, StringFormat='$ {0:N0}'}"
                                                         FontAttributes="Bold"
                                                         TextColor="White"
-                                                        Padding="12,4"/>
+                                                        Padding="12,4" />
                                                 </dx:DXBorder>
                                             </Grid>
-                                            <Label Style="{StaticResource TextCardTitle}" Text="{Binding Description}" Margin="10,8"/>
-                                            <Grid ColumnDefinitions="Auto,*" Margin="4,0">
-                                                <dx:DXImage
-                                                    HeightRequest="18"
-                                                    Source="filteringui_location_small"
-                                                    TintColor="{dx:ThemeColor Primary}"/>
-                                                 <Label Style="{StaticResource TextCardCaption}" Text="{Binding Address}" Grid.Column="1"/>
-                                            </Grid>
+                                            <Label
+                                                Style="{StaticResource TextCardTitle}"
+                                                Text="{Binding Description}"
+                                                Margin="10,0" />
+                                            <dx:DXContentPresenter
+                                                Content="{Binding Address}"
+                                                TextMaxLines="1"
+                                                TextLineBreakMode="TailTruncation"
+                                                Icon="filteringui_location_small"
+                                                IconColor="{dx:ThemeColor Primary}"
+                                                Margin="10,0"
+                                                IconWidth="18"
+                                                IconHeight="18" />
                                         </VerticalStackLayout>
                                     </dx:DXBorder>
                                 </DataTemplate>
@@ -168,7 +208,7 @@
                             IsScrollBarVisible="False">
                             <dx:DXCollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <dx:DXBorder Style="{StaticResource ShimmerElementCard}" Margin="24,0,0,0"/>
+                                    <dx:DXBorder Style="{StaticResource ShimmerElementCard}" Margin="24,0,0,0" />
                                 </DataTemplate>
                             </dx:DXCollectionView.ItemTemplate>
                         </dx:DXCollectionView>
@@ -178,18 +218,45 @@
                 <dx:ShimmerView Style="{StaticResource ShimmerEffect}" IsLoading="{Binding DealersLoading}">
                     <dx:ShimmerView.Content>
                         <VerticalStackLayout>
-                            <Label Style="{StaticResource TextHeader}" Text="Top Realtors" Margin="24"/>
-                            <dx:DXCollectionView ItemsSource="{Binding HumanItems}" ReduceSizeToContent="true" ItemSpacing="16">
+                            <Label
+                                Style="{StaticResource TextHeader}"
+                                Text="Top Realtors"
+                                Margin="24" />
+                            <dx:DXCollectionView
+                                ItemsSource="{Binding HumanItems}"
+                                ReduceSizeToContent="true"
+                                ItemSpacing="16">
                                 <dx:DXCollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *" ColumnSpacing="16" RowSpacing="4" Margin="24,0">
-                                            <Image Source="{Binding Photo}" WidthRequest="40" HeightRequest="40" Grid.RowSpan="2">
+                                        <Grid
+                                            RowDefinitions="Auto, Auto"
+                                            ColumnDefinitions="Auto, *"
+                                            ColumnSpacing="16"
+                                            RowSpacing="4"
+                                            Margin="24,0">
+                                            <Image
+                                                Grid.RowSpan="2"
+                                                Source="{Binding Photo}"
+                                                WidthRequest="40"
+                                                HeightRequest="40">
                                                 <Image.Clip>
-                                                    <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20" />
+                                                    <EllipseGeometry
+                                                        RadiusX="20"
+                                                        RadiusY="20"
+                                                        Center="20,20" />
                                                 </Image.Clip>
                                             </Image>
-                                            <Label Style="{StaticResource TextUserName}" VerticalOptions="End" Text="{Binding Name}" Grid.Column="1" />
-                                            <Label Style="{StaticResource TextUserCaption}" VerticalOptions="Start" Text="{Binding Deals}" Grid.Column="1" Grid.Row="1" />
+                                            <Label
+                                                Grid.Column="1"
+                                                Style="{StaticResource TextUserName}"
+                                                VerticalOptions="End"
+                                                Text="{Binding Name}" />
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Style="{StaticResource TextUserCaption}"
+                                                VerticalOptions="Start"
+                                                Text="{Binding Deals}" />
                                         </Grid>
                                     </DataTemplate>
                                 </dx:DXCollectionView.ItemTemplate>
@@ -197,13 +264,25 @@
                         </VerticalStackLayout>
                     </dx:ShimmerView.Content>
                     <dx:ShimmerView.LoadingView>
-                        <dx:DXCollectionView ItemsSource="{Binding HumanItems}" ReduceSizeToContent="true" Margin="0,24" ItemSpacing="16">
+                        <dx:DXCollectionView
+                            ItemsSource="{Binding HumanItems}"
+                            ReduceSizeToContent="true"
+                            Margin="0,24"
+                            ItemSpacing="16">
                             <dx:DXCollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *" ColumnSpacing="16" Margin="24,0">
-                                        <Ellipse Style="{StaticResource ShimmerElementAvatar}" Grid.RowSpan="2" />
-                                        <dx:DXBorder Style="{StaticResource ShimmerElementRow}" Grid.Column="1" />
-                                        <dx:DXBorder Style="{StaticResource ShimmerElementRow}" Margin="0,0,128,0" Grid.Column="1" Grid.Row="1" />
+                                    <Grid
+                                        RowDefinitions="Auto, Auto"
+                                        ColumnDefinitions="Auto, *"
+                                        ColumnSpacing="16"
+                                        Margin="24,0">
+                                        <Ellipse Grid.RowSpan="2" Style="{StaticResource ShimmerElementAvatar}" />
+                                        <dx:DXBorder Grid.Column="1" Style="{StaticResource ShimmerElementRow}" />
+                                        <dx:DXBorder
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Style="{StaticResource ShimmerElementRow}"
+                                            Margin="0,0,128,0" />
                                     </Grid>
                                 </DataTemplate>
                             </dx:DXCollectionView.ItemTemplate>
@@ -212,6 +291,6 @@
                 </dx:ShimmerView>
 
             </VerticalStackLayout>
-        </ScrollView>
+        </dx:DXScrollView>
     </ContentPage.Content>
-</demo:AdaptivePage>
+</demo:DemoPage>

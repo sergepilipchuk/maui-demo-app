@@ -10,7 +10,8 @@ namespace DemoCenter.Maui.Data {
                     Title = "First Look",
                     Description = "An introduction to our Collection View control. Shows basic control features, such as vertical orientation, grouping, and item templates.",
                     Module = typeof(ContactsView),
-                    Icon = "collectionview_firstlook"
+                    Icon = "collectionview_firstlook",
+                    DemoItemStatus = DemoItemStatus.Updated
                 },
                 new DemoItem() {
                     Title = "Filtering UI",

@@ -13,7 +13,7 @@ public class TitleViewFix : Grid {
     }
     protected override Size ArrangeOverride(Rect bounds) {
         if (!this.isMeasured)
-            Measure(bounds.Width, double.PositiveInfinity, MeasureFlags.None);
+            Measure(bounds.Width, double.PositiveInfinity);
         if (bounds.Height == 0)
             bounds.Height = DesiredSize.Height + 12;
         return base.ArrangeOverride(bounds);

@@ -1,4 +1,4 @@
-﻿using DevExpress.Maui.Core;
+﻿using DevExpress.Maui.Mvvm;
 using DevExpress.Spreadsheet;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraRichEdit;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DemoCenter.Maui.DemoModules.OfficeFileAPI.ViewModels;
 
-public class ConverterViewModel : BindableBase {
+public class ConverterViewModel : DXObservableObject {
 
     #region properties
     private readonly List<FileFormat> allFormats;
@@ -24,7 +24,7 @@ public class ConverterViewModel : BindableBase {
         get => availableTargetFormats;
         set {
             availableTargetFormats = value;
-            RaisePropertyChanged();
+            OnPropertyChanged();
         }
     }
 
@@ -33,7 +33,7 @@ public class ConverterViewModel : BindableBase {
         get => selectedTargetFormat;
         set {
             selectedTargetFormat = value;
-            RaisePropertiesChanged();
+            OnPropertyChanged();
             ConvertFileCommand.ChangeCanExecute();
         }
     }
@@ -44,7 +44,7 @@ public class ConverterViewModel : BindableBase {
         get => isFileSelected;
         set {
             isFileSelected = value;
-            RaisePropertiesChanged();
+            OnPropertyChanged();
             ConvertFileCommand.ChangeCanExecute();
         }
     }
@@ -54,7 +54,7 @@ public class ConverterViewModel : BindableBase {
         get => selectedSourceFormat;
         set {
             selectedSourceFormat = value;
-            RaisePropertiesChanged();
+            OnPropertyChanged();
             ConvertFileCommand.ChangeCanExecute();
         }
     }
@@ -64,7 +64,7 @@ public class ConverterViewModel : BindableBase {
         get => selectedFileName;
         set {
             selectedFileName = value;
-            RaisePropertyChanged();
+            OnPropertyChanged();
         }
     }
 

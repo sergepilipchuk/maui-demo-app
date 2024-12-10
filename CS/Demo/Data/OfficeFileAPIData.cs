@@ -19,8 +19,7 @@ namespace DemoCenter.Maui.Data {
                     Title = "PDF Viewer",
                     Description="The DevExpress Pdf Viewer allow you to view and search through PDF Document",
                     Module = typeof(PdfViewerPage),
-                    Icon = "pdfviewer",
-                    DemoItemStatus = DemoItemStatus.Updated
+                    Icon = "pdfviewer"
                 },
                 new DemoItem() {
                     Title = "Sign PDF Files",

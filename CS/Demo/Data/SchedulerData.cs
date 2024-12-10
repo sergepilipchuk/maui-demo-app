@@ -22,10 +22,16 @@ namespace DemoCenter.Maui.Data {
                     Icon = "calendar"
                 },
                 new DemoItem() {
+                    Title = "On-Demand Data Loading",
+                    Description="This demo shows how to fetch data on demand. When this feature is enabled, the Scheduler requests data only for the specified date range.",
+                    Module = typeof(OnDemandDataLoading),
+                    DemoItemStatus = DemoItemStatus.New,
+                    Icon = "fetchappointment"
+                },
+                new DemoItem() {
                     Title = "Agenda View",
                     Description="This view displays appointments in a list.",
                     Module = typeof(AgendaViewDemo),
-                    DemoItemStatus = DemoItemStatus.New,
                     Icon = "agendaview"
                 },
                 new DemoItem() {

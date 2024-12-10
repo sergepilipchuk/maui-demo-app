@@ -1,17 +1,20 @@
 ﻿using System;
 using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.DemoModules.DataForm.ViewModels;
+using DevExpress.Maui.Core;
 
 namespace DemoCenter.Maui.Views {
-    public partial class DataFormAccountFormView : AdaptivePage {
+    public partial class DataFormAccountFormView : DemoPage {
         public DataFormAccountFormView() {
             InitializeComponent();
             BindingContext = new AccountFormViewModel();
-            OrientationChanged += OnOrientationChanged;
+            ON.OrientationChanged(this, (x) => {
+                ((AccountFormViewModel)x.BindingContext).Rotate(dataForm, ON.Orientation(true, false));
+            });
         }
 
         void OnOrientationChanged(object sender, EventArgs e) {
-            ((AccountFormViewModel)this.BindingContext).Rotate(dataForm, Orientation);
+            ((AccountFormViewModel)this.BindingContext).Rotate(dataForm, ON.Orientation(true, false));
         }
 
         void SubmitOnClicked(object sender, EventArgs e) {

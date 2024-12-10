@@ -1,4 +1,5 @@
 <ContentPage
+    x:Class="DemoCenter.Maui.Views.ControlPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:dx="http://schemas.devexpress.com/maui"
@@ -7,24 +8,41 @@
     xmlns:models="clr-namespace:DemoCenter.Maui.Models"
     xmlns:viewmodels="clr-namespace:DemoCenter.Maui.ViewModels"
     x:DataType="viewmodels:ControlViewModel"
-    x:Class="DemoCenter.Maui.Views.ControlPage"
     ios:Page.UseSafeArea="False"
     Title="{Binding Title}"
     BackgroundColor="{dx:ThemeColor Surface}">
-    
+
     <ContentPage.BindingContext>
-        <viewmodels:ControlViewModel/>
+        <viewmodels:ControlViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <dx:DXCollectionView x:Name="collectionView" x:DataType="viewmodels:ControlViewModel"
-            ItemsSource="{Binding DemoItems}" SelectedItem="{Binding SelectedItem}"
-            SelectionMode="Single" BackgroundColor="Transparent">
+        <dx:DXCollectionView
+            x:Name="collectionView"
+            x:DataType="viewmodels:ControlViewModel"
+            ItemsSource="{Binding DemoItems}"
+            SelectedItem="{Binding SelectedItem}"
+            SelectionMode="Single"
+            UseRippleEffect="True"
+            BackgroundColor="Transparent">
             <dx:DXCollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:DemoItem">
-                    <dx:FormItem Margin="16,0" ImageSource="{Binding Icon}" ImageColor="{dx:ThemeColor OnSurfaceVariant}" ImageVerticalOptions="Start" 
-                        ImageWidth="40" ImageHeight="40" ImageMargin="0,4,16,4" Text="{Binding ControlsPageTitle}" TextFontSize="16" TextFontAttributes="Bold" 
-                        TextColor="{dx:ThemeColor OnSurface}" Detail="{Binding Description}" DetailFontSize="14" DetailColor="{dx:ThemeColor OnSurface}"/>
+                    <dx:FormItem
+                        Margin="16,0"
+                        ImageSource="{Binding Icon}"
+                        ImageColor="{dx:ThemeColor OnSurfaceVariant}"
+                        ImageVerticalOptions="Start"
+                        ImageWidth="40"
+                        ImageHeight="40"
+                        ImageMargin="0,4,16,4"
+                        Text="{Binding ControlsPageTitle}"
+                        TextFontSize="16"
+                        TextFontAttributes="Bold"
+                        TextColor="{dx:ThemeColor OnSurface}"
+                        Detail="{Binding Description}"
+                        DetailFontSize="14"
+                        DetailColor="{dx:ThemeColor OnSurface}"
+                        AllowTap="False" />
                 </DataTemplate>
             </dx:DXCollectionView.ItemTemplate>
         </dx:DXCollectionView>

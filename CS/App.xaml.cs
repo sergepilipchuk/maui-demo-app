@@ -1,9 +1,8 @@
 ﻿using System.Globalization;
 using System.Threading;
 using Application = Microsoft.Maui.Controls.Application;
-#if PaidDemoModules
+using Microsoft.Maui;
 using Microsoft.Maui.Controls;
-#endif
 
 namespace DemoCenter.Maui {
     public partial class App : Application {
@@ -17,7 +16,9 @@ namespace DemoCenter.Maui {
 #if PaidDemoModules
             Routing.RegisterRoute("editFieldsPage", typeof(Views.FillPDFEditFieldsPage));
 #endif
-            MainPage = new AppShell();
+        }
+        protected override Window CreateWindow(IActivationState activationState) {
+            return new Window(new AppShell());
         }
     }
 }

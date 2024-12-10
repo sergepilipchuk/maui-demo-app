@@ -1,5 +1,5 @@
-﻿using DevExpress.Maui.Core;
+﻿using DevExpress.Maui.Mvvm;
 
 namespace DemoCenter.Maui.DemoModules.OfficeFileAPI.ViewModels {
-    public class PdfViewerViewModel : BindableBase { }
+    public class PdfViewerViewModel : DXObservableObject { }
 }

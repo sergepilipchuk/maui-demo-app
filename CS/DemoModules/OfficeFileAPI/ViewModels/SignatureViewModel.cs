@@ -3,7 +3,7 @@ using DevExpress.Pdf;
 using SkiaSharp.Views.Maui.Controls;
 using SkiaSharp;
 using System.Windows.Input;
-using DevExpress.Maui.Core;
+using DevExpress.Maui.Mvvm;
 using DevExpress.Office.DigitalSignatures;
 using System.IO;
 using Microsoft.Maui.Controls;
@@ -15,7 +15,7 @@ using System.Linq;
 
 namespace DemoCenter.Maui.DemoModules.OfficeFileAPI.ViewModels;
 
-public class SignatureDemoViewModel : BindableBase {
+public class SignatureDemoViewModel : DXObservableObject {
     #region fields
     ImageSource pdfPreview;
     const string defaultDocumentName = "arrivalform.pdf";
@@ -32,7 +32,7 @@ public class SignatureDemoViewModel : BindableBase {
         }
         set {
             pdfPreview = value;
-            RaisePropertyChanged();
+            OnPropertyChanged();
         }
     }
     public bool IsSignatureViewOpened {
@@ -41,7 +41,7 @@ public class SignatureDemoViewModel : BindableBase {
         }
         set {
             isSignatureViewOpened = value;
-            RaisePropertyChanged();
+            OnPropertyChanged();
         }
     }
     public ICommand SignPdfCommand {

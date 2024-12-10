@@ -14,29 +14,29 @@ namespace DemoCenter.Maui.ViewModels {
 
     public class RangeBarChartViewModel : ChartViewModelBase {
         readonly RangeBarData chartData = new RangeBarData();
-        readonly DateTimeRange visualRange;
+        readonly DateRange visualRange;
 
-        public DateTimeRange VisualRange => visualRange;
+        public DateRange VisualRange => visualRange;
         public override string Title => "Crude Oil Prices in 2019";
         public List<RangeDateTimeData> WTISeriesData => chartData.SeriesData[0];
         public List<RangeDateTimeData> BrentSeriesData => chartData.SeriesData[1];
 
         public RangeBarChartViewModel() {
-            visualRange = new DateTimeRange() { VisualMin = new System.DateTime(2019, 2, 1), VisualMax = new System.DateTime(2019, 9, 1) };
+            visualRange = new DateRange() { VisualMin = new System.DateTime(2019, 2, 1), VisualMax = new System.DateTime(2019, 9, 1) };
         }
     }
 
     public class SideBySideRangeBarChartViewModel : ChartViewModelBase {
         readonly SideBySideRangeBarData chartData = new SideBySideRangeBarData();
-        readonly DateTimeRange visualRange;
+        readonly DateRange visualRange;
 
-        public DateTimeRange VisualRange => visualRange;
+        public DateRange VisualRange => visualRange;
         public override string Title => "Crude Oil and Natural Gas Prices in 2019";
         public List<RangeDateTimeData> OilSeriesData => chartData.SeriesData[0];
         public List<RangeDateTimeData> GasSeriesData => chartData.SeriesData[1];
 
         public SideBySideRangeBarChartViewModel() {
-            visualRange = new DateTimeRange() { VisualMin = new System.DateTime(2019, 2, 1), VisualMax = new System.DateTime(2019, 7, 1) };
+            visualRange = new DateRange() { VisualMin = new System.DateTime(2019, 2, 1), VisualMax = new System.DateTime(2019, 7, 1) };
         }
     }
 

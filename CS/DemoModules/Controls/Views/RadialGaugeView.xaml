@@ -95,7 +95,7 @@
                 <Setter Property="Thickness">
                     <dx:OnDisplaySize ExtraLarge="16" Large="10" />
                 </Setter>
-                
+
             </Style>
 
             <Style TargetType="dx:RadialScale">
@@ -148,7 +148,7 @@
                                                 ItemTemplate="{StaticResource LegendItem}"
                                                 ItemSpacing="16" />
                             <dx:DXStackLayout Orientation="Horizontal">
-                                <Switch IsToggled="{Binding IsPowerSavingEnabled, Mode=OneWayToSource}" />
+                                <dx:DXSwitch IsChecked="{Binding IsPowerSavingEnabled, Mode=OneWayToSource}" />
                                 <Label Text="Energy saving" LineBreakMode="WordWrap" MinimumHeightRequest="30" WidthRequest="40" Margin="{OnIdiom Default='4, 0', Tablet='8, 0'}" FontSize="{dx:OnDisplaySize ExtraSmall=12}" TextColor="{dx:ThemeColor Key=OnSurface}"/>
                             </dx:DXStackLayout>
                         </dx:DXStackLayout>

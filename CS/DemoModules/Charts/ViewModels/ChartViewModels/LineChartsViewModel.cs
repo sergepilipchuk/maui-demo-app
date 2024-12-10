@@ -32,14 +32,14 @@ namespace DemoCenter.Maui.ViewModels {
 
     public class SplineChartViewModel : ChartViewModelBase {
         readonly SplineData chartData = new SplineData();
-        readonly DateTimeRange visualRange;
+        readonly DateRange visualRange;
 
-        public DateTimeRange VisualRange => visualRange;
+        public DateRange VisualRange => visualRange;
         public override string Title => "Energy Released by Earthquakes";
         public IList<DateTimeData> SeriesData => chartData.SeriesData;
 
         public SplineChartViewModel() {
-            visualRange = new DateTimeRange() { VisualMin = new DateTime(1999, 1, 1), VisualMax = new DateTime(1999, 5, 1), SideMargin = 10 };
+            visualRange = new DateRange() { VisualMin = new DateTime(1999, 1, 1), VisualMax = new DateTime(1999, 5, 1), SideMargin = 10 };
         }
     }
 }

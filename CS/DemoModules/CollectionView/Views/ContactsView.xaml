@@ -33,7 +33,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Ellipse Grid.RowSpan="2" Margin="0"
-                                Fill="{Binding CategoryColor}"
+                                Fill="{dx:ThemeColor PrimaryContainer}"
                                 HeightRequest="50"
                                 WidthRequest="50"
                                 VerticalOptions="CenterAndExpand"
@@ -42,9 +42,10 @@
                         <Label Grid.RowSpan="2"
                                Margin="0"
                                Text="{Binding Initials}"
-                               TextColor="White"
+                               TextColor="{dx:ThemeColor OnPrimaryContainer}"
                                BackgroundColor="Transparent"
-                               FontSize="20"
+                               FontSize="16"
+                               FontAttributes="Bold"
                                VerticalTextAlignment="Center"
                                HorizontalTextAlignment="Center"
                                VerticalOptions="CenterAndExpand"
@@ -63,10 +64,11 @@
                     </StackLayout>
                     <dx:DXImage Grid.Column="2"
                                 Source="{Binding CallType, Converter={StaticResource callTypeIconConverter}}"
+                                TintColor="{dx:ThemeColor OnSurfaceVariant}"
                                 HorizontalOptions="EndAndExpand"
                                 VerticalOptions="CenterAndExpand"
-                                HeightRequest="20"
-                                WidthRequest="20"/>
+                                HeightRequest="16"
+                                WidthRequest="16"/>
                     <dx:DXImage Grid.Column="3"
                                 TintColor="{dx:ThemeColor OnSurfaceVariant}"
                                 HorizontalOptions="EndAndExpand"
@@ -85,15 +87,6 @@
                         <ColumnDefinition Width="20"/>
                         <ColumnDefinition Width="44"/>
                     </Grid.ColumnDefinitions>
-                    <Ellipse Margin="0"
-                                Fill="White"
-                                Stroke="{dx:ThemeColor OutlineVariant}"
-                                StrokeThickness="1"
-                                HeightRequest="50"
-                                WidthRequest="50"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center">
-                    </Ellipse>
                     <Image Source="{Binding Contact.Photo}" VerticalOptions="Center"
                                     HorizontalOptions="Center" WidthRequest="48" HeightRequest="48">
                         <Image.Clip>
@@ -113,10 +106,11 @@
                     </StackLayout>
                     <dx:DXImage Grid.Column="2"
                                 Source="{Binding CallType, Converter={StaticResource callTypeIconConverter}}"
+                                TintColor="{dx:ThemeColor OnSurfaceVariant}"
                                 HorizontalOptions="EndAndExpand"
                                 VerticalOptions="CenterAndExpand"
-                                HeightRequest="20"
-                                WidthRequest="20"/>
+                                HeightRequest="16"
+                                WidthRequest="16"/>
                     <dx:DXImage Grid.Column="3"
                                 TintColor="{dx:ThemeColor OnSurfaceVariant}"
                                 VerticalOptions="CenterAndExpand"
@@ -132,11 +126,13 @@
                                        IconTemplate="{StaticResource iconItemTemplate}"/>
 
             <DataTemplate x:Key="groupItemTemplate">
-                <StackLayout Padding="{OnIdiom Phone='16,0,18,10', Tablet='37,0,37,10'}" BackgroundColor="{dx:ThemeColor Surface}">
-                    <Label Margin="0,20,0,4"
-                           TextColor="{dx:ThemeColor OnSurfaceVariant}"
-                           Text="{Binding Value, StringFormat='{0:d}', Converter={StaticResource upperCaseConverter}}"/>
-                </StackLayout>
+                <Grid BackgroundColor="{dx:ThemeColor SurfaceContainer}">
+                    <Label Margin="16,12"
+                           FontSize="16"
+                           TextColor="{dx:ThemeColor OnSurface}"
+                           FontAttributes="Bold"
+                           Text="{Binding Value, StringFormat='{0:d}'}"/>
+                </Grid>
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -148,8 +144,6 @@
                                    ItemTemplate="{StaticResource contactItemTemplateSelector}"
                                    ItemsSource="{Binding Recent}"
                                    Tap="ItemSelected"
-                                   GroupItemSeparatorThickness="1"
-                                   GroupItemSeparatorCapMargin="{OnIdiom Phone='16', Tablet='37'}"
                                    UseRippleEffect="true"
                                    AllowFixedGroupHeaders="True">
                 <dx:DXCollectionView.GroupDescription>

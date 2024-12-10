@@ -14,6 +14,7 @@ namespace DemoCenter.Maui {
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => !(bool)value;
     }
 
+    [AcceptEmptyServiceProvider]
     public class BoolToObjectConverter : IValueConverter, IMarkupExtension {
         public object FalseValue { get; set; }
         public object TrueValue { get; set; }
@@ -94,6 +95,7 @@ namespace DemoCenter.Maui {
             throw new NotImplementedException();
         }
     }
+    [AcceptEmptyServiceProvider]
     public class EnumToDescriptionConverter : IMarkupExtension, IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             return Convert(value);
@@ -114,6 +116,7 @@ namespace DemoCenter.Maui {
             return this;
         }
     }
+    [AcceptEmptyServiceProvider]
     public class EnumToItemsSource : IMarkupExtension {
         public Type EnumType { get; set; }
         public object ProvideValue(IServiceProvider serviceProvider) {
@@ -152,7 +155,7 @@ namespace DemoCenter.Maui {
             }
         }
     }
-
+    [AcceptEmptyServiceProvider]
     public class EnumToBooleanConverter : IValueConverter, IMarkupExtension {
         [Flags]
         public enum BackConversionMode {
@@ -182,5 +185,8 @@ namespace DemoCenter.Maui {
             return Binding.DoNothing;
         }
         object IMarkupExtension.ProvideValue(IServiceProvider serviceProvider) => this;
+    }
+    [AcceptEmptyServiceProvider]
+    public class VariableMultiValueConverterExtension : CommunityToolkit.Maui.Converters.VariableMultiValueConverter {
     }
 }

@@ -1,16 +1,15 @@
 using System.IO;
 using System.Threading.Tasks;
-using DevExpress.Maui.Core;
+using DevExpress.Maui.Mvvm;
 using Microsoft.Maui.Storage;
 
 namespace DemoCenter.Maui.DemoModules.Editors.ViewModels;
 
-public class HtmlEditViewModel : BindableBase {
-
-    public string Text { get => GetValue<string>(); set => SetValue(value); }
+public class HtmlEditViewModel : DXObservableObject {
+    public string Text { get => text; set => SetProperty(ref text, value); }
     public string FileName {
-        get => GetValue<string>();
-        set => SetValue(value, changedCallback: async () => {
+        get => fileName;
+        set => SetProperty(ref fileName, value, changedCallback: async () => {
             await LoadData(FileName);
         });
     }
@@ -21,4 +20,7 @@ public class HtmlEditViewModel : BindableBase {
         string html = await reader.ReadToEndAsync();
         Text = html;
     }
+
+    string text;
+    string fileName;
 }

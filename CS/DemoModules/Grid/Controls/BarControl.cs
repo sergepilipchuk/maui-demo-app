@@ -10,7 +10,7 @@ namespace DemoCenter.Maui.Views {
         public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(BarControl), DXColor.Cyan, propertyChanged: OnColorChanged);
 
         static void OnLayoutChanged(BindableObject bindable, object oldValue, object newValue) {
-            ((BarControl)bindable).InvalidateLayout();
+            ((BarControl)bindable).InvalidateMeasure();
         }
 
         static void OnColorChanged(BindableObject bindable, object oldValue, object newValue) {

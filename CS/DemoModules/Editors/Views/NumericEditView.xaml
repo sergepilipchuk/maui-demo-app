@@ -20,7 +20,7 @@
     <ContentPage.Content>
         <dx:DXDockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{dx:ThemeColor Surface}">
             <dx:NumericEdit
-                dx:DXDockLayout.Dock="Top" 
+                dx:DXDockLayout.Dock="Top"
                 Value="{Binding Value}"
                 MinValue="{Binding MinValue}"
                 MaxValue="{Binding MaxValue}"
@@ -56,7 +56,7 @@
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Allow Looping" Style="{StaticResource TextStyle}"/>
-                            <Switch x:Name="allowLooping" Style="{DynamicResource SwitchStyle}" IsToggled="{Binding AllowLooping}"/>
+                            <dx:DXSwitch x:Name="allowLooping" Style="{DynamicResource SwitchStyle}" IsChecked="{Binding AllowLooping}"/>
                         </StackLayout>
                     </StackLayout>
 
@@ -65,7 +65,7 @@
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Select On Focus" Style="{StaticResource TextStyle}"/>
-                            <Switch x:Name="selectValueOnFocus" Style="{DynamicResource SwitchStyle}" IsToggled="{Binding SelectValueOnFocus}"/>
+                            <dx:DXSwitch x:Name="selectValueOnFocus" Style="{DynamicResource SwitchStyle}" IsChecked="{Binding SelectValueOnFocus}"/>
                         </StackLayout>
                     </StackLayout>
                     <dx:DXSeparator SideMargin="0"/>
@@ -100,18 +100,18 @@
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Is Up and Down Icons Visible" Style="{StaticResource TextStyle}"/>
-                            <Switch x:Name="isUpDownIconVisible" Style="{DynamicResource SwitchStyle}" IsToggled="{Binding IsUpDownIconsVisible}"/>
+                            <dx:DXSwitch x:Name="isUpDownIconVisible" Style="{DynamicResource SwitchStyle}" IsChecked="{Binding IsUpDownIconsVisible}"/>
                         </StackLayout>
                     </StackLayout>
 
                     <dx:DXSeparator SideMargin="0"/>
 
                     <Grid ColumnSpacing="8" Margin="16" ColumnDefinitions="0.5*, 0.5*">
-                        <dx:DXButton 
+                        <dx:DXButton
                             Content="Toggle Error"
                             Command="{Binding ToggleErrorCommand}"
                             HorizontalOptions="FillAndExpand" />
-                        <dx:DXButton 
+                        <dx:DXButton
                             Content="Reset to Default"
                             Command="{Binding ResetToDefaultCommand}"
                             HorizontalOptions="FillAndExpand"

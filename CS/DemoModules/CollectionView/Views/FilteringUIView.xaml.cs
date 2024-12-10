@@ -3,11 +3,10 @@ using DevExpress.Maui.Editors;
 using DemoCenter.Maui.ViewModels;
 using DemoCenter.Maui.Services;
 using Microsoft.Maui.Controls;
-using System;
 using Microsoft.Maui.Devices;
 
 namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
-    public partial class FilteringUIView : Demo.AdaptivePage {
+    public partial class FilteringUIView : Demo.DemoPage {
         EnumToDescriptionConverter EnumToDescriptionConverter { get; } = new EnumToDescriptionConverter();
         FilteringUIViewModel ViewModel { get; }
 
@@ -16,11 +15,9 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
             ViewModel = new FilteringUIViewModel();
             BindingContext = ViewModel;
             UpdateColumnsCount();
-            OrientationChanged += OnOrientationChanged;
-        }
-
-        void OnOrientationChanged(object sender, EventArgs e) {
-            UpdateColumnsCount();
+            ON.OrientationChanged(this, (x) => {
+                x.UpdateColumnsCount();
+            });
         }
         void UpdateColumnsCount() {
             double currentScreenHeight = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density;

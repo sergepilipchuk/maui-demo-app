@@ -3,7 +3,7 @@ using DevExpress.Pdf;
 using SkiaSharp.Views.Maui.Controls;
 using SkiaSharp;
 using System.Windows.Input;
-using DevExpress.Maui.Core;
+using DevExpress.Maui.Mvvm;
 using Microsoft.Maui.Controls;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,7 +12,7 @@ using Microsoft.Maui.Storage;
 
 namespace DemoCenter.Maui.DemoModules.OfficeFileAPI.ViewModels;
 
-public class FillPDFMainPageViewModel : BindableBase {
+public class FillPDFMainPageViewModel : DXObservableObject {
     #region fields
     ImageSource pdfPreview;
     const string defaultDocumentName = "arrivalform.pdf";
@@ -26,7 +26,7 @@ public class FillPDFMainPageViewModel : BindableBase {
         }
         set {
             pdfPreview = value;
-            RaisePropertyChanged();
+            OnPropertyChanged();
         }
     }
     public string Document {
@@ -35,14 +35,14 @@ public class FillPDFMainPageViewModel : BindableBase {
         }
         set {
             document = value;
-            RaisePropertyChanged();
+            OnPropertyChanged();
         }
     }
     public bool Loading {
         get => isLoading;
         set {
             isLoading = value;
-            RaisePropertyChanged();
+            OnPropertyChanged();
         }
     }
     public ICommand EditDocumentFieldsCommand {

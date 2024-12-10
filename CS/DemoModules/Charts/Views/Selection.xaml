@@ -77,7 +77,7 @@
                     <dx:ChartView.AxisX>
                         <dx:DateTimeAxisX MeasureUnit="Year">
                             <dx:DateTimeAxisX.Range>
-                                <dx:DateTimeRange SideMargin="0.2" />
+                                <dx:DateRange SideMargin="0.2" />
                             </dx:DateTimeAxisX.Range>
                         </dx:DateTimeAxisX>
                     </dx:ChartView.AxisX>

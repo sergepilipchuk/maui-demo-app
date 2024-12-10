@@ -6,6 +6,7 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Xaml;
 
 namespace DemoCenter.Maui.DemoModules.Editors.Converters {
+    [AcceptEmptyServiceProvider]
     sealed class BoxModeToImageSourceConverterExtension : IMarkupExtension<BoxModeToImageSourceConverter> {
         public ImageSource Filled { get; set; }
         public ImageSource Outlined { get; set; }
@@ -39,6 +40,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.Converters {
         }
     }
 
+    [AcceptEmptyServiceProvider]
     sealed class CharacterCasingToImageSourceConverterExtension : IMarkupExtension<CharacterCasingToImageSourceConverter> {
         public ImageSource Normal { get; set; }
         public ImageSource Uppercase { get; set; }
@@ -77,6 +79,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.Converters {
         }
     }
 
+    [AcceptEmptyServiceProvider]
     sealed class CornerModeToImageSourceConverterExtension : IMarkupExtension<CornerModeToImageSourceConverter> {
         public ImageSource Cut { get; set; }
         public ImageSource Round { get; set; }
@@ -110,6 +113,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.Converters {
         }
     }
 
+    [AcceptEmptyServiceProvider]
     sealed class BoxModeToImageNameConverterExtension : IMarkupExtension<BoxModeToImageNameConverter> {
         public string Filled { get; set; }
         public string Outlined { get; set; }
@@ -143,6 +147,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.Converters {
         }
     }
 
+    [AcceptEmptyServiceProvider]
     sealed class CornerModeToImageNameConverterExtension : IMarkupExtension<CornerModeToImageNameConverter> {
         public string Cut { get; set; }
         public string Round { get; set; }

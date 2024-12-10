@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-	<PropertyGroup>
-		<TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
+    <PropertyGroup>
+		<TargetFrameworks>net9.0-android;net9.0-ios</TargetFrameworks>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<OutputType>Exe</OutputType>
 		<ApplicationTitle>DevExpress UI</ApplicationTitle>
-		<DXVer>24.2.1</DXVer>
+		<DXVer>24.2.3</DXVer>
 		<AssemblyVersion>$(DXVer)</AssemblyVersion>
 		<AssemblyFileVersion>$(DXVer)</AssemblyFileVersion>
 		<Company>Developer Express Inc.</Company>
 		<ApplicationIdGuid>06FD4F07-07FF-4FEF-A6EA-8B6FA3A99898</ApplicationIdGuid>
-		<ApplicationDisplayVersion>24.2.1</ApplicationDisplayVersion>
-		<ApplicationVersion>13</ApplicationVersion>
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
 		<RootNamespace>DemoCenter.Maui</RootNamespace>
 		<AssemblyName>DemoCenter.Maui</AssemblyName>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<NoWarn>CA1422;CA1416;NU1603;NU1504</NoWarn>
-		 <NoWarn>$(NoWarn);XC0023;XC0022</NoWarn>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+        
+        
+		<NoWarn>$(NoWarn);CA1422;CA1416;NU1603;NU1504;XC0023;XC0022;NU1903</NoWarn>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">12.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+
+        
 	</PropertyGroup>
 	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
 		<ApplicationId>com.devexpress.democenter.maui</ApplicationId>
@@ -28,20 +31,21 @@
 		<ApplicationId>com.devexpress.mauimobileui</ApplicationId>
 	</PropertyGroup>
 
-
+    <Import Project="$(MSBuildThisFileDirectory)..\Packages.Build.props" />
 	<ItemGroup>
-        <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-        <PackageReference Include="SQLite" Version="3.13.0" />
+        <PackageReference Include="sqlite-net-pcl" Version="$(sqlite_net_pcl)" />
+        <PackageReference Include="SQLite" Version="$(SQLite)" />
+        <PackageReference Include="SQLitePCLRaw.core" Version="$(SQLitePCLRaw_core)" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="$(SQLitePCLRaw_bundle_green)" />
 
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
-
-		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.6" />
-		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220318192836" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="$(Microsoft_EntityFrameworkCore)" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="$(Microsoft_EntityFrameworkCore)" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="$(Microsoft_EntityFrameworkCore)" />
+		
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(Microsoft_Maui_Controls)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="$(Microsoft_Extensions_Logging_Debug)" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="$(CommunityToolkit_Maui)" />
+        <PackageReference Include="System.Private.Uri" Version="$(System_Private_Uri)" />
 
 	</ItemGroup>
 
@@ -63,6 +67,7 @@
 		<MauiImage Include="Resources\Images\Avatars\*" />
 		<MauiImage Include="Resources\Images\Controls\*" />
 		<MauiImage Include="Resources\Images\Editors\*" />
+        <MauiImage Include="Resources\Images\Scheduler\*" />
 		<MauiImage Include="Resources\Images\Special\dxicon.svg" BaseSize="160,160" />
 		<MauiImage Include="DemoModules\DataForm\Images\*" />
 		<MauiImage Include="Demo\Images\Charts\*" />
