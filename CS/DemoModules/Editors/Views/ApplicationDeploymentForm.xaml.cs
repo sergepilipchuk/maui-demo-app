@@ -8,7 +8,7 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Devices;
 
 namespace DemoCenter.Maui.Views {
-    public partial class ApplicationDeploymentForm : AdaptivePage {
+    public partial class ApplicationDeploymentForm : DemoPage {
         ApplicationDeploymentViewModel viewModel;
 
         public ApplicationDeploymentForm() {
@@ -21,7 +21,7 @@ namespace DemoCenter.Maui.Views {
             this.BindingContext = viewModel;
             InitializeComponent();
             if (DeviceInfo.Idiom != DeviceIdiom.Tablet)
-                OrientationChanged += OnOrientationChanged;
+                ON.OrientationChanged(this, x => x.OnOrientationChanged());
         }
 
         protected override void OnAppearing() {
@@ -38,8 +38,8 @@ namespace DemoCenter.Maui.Views {
 #endif
         }
 
-        void OnOrientationChanged(object sender, EventArgs e) {
-            bool isVertical = Orientation == PageOrientation.Portrait;
+        void OnOrientationChanged() {
+            bool isVertical = ON.Orientation(true, false);
 
             if (isVertical) {
                 this.photoContainer.Margin = new Thickness(0);
@@ -47,7 +47,7 @@ namespace DemoCenter.Maui.Views {
                 this.photoContainer.Margin = new Thickness(0, 50);
             }
 
-            this.viewModel.Rotate(dataForm, Orientation);
+            this.viewModel.Rotate(dataForm, isVertical);
         }
 
         void SubmitOnClicked(object sender, EventArgs e) {

@@ -8,13 +8,13 @@ using DevExpress.Maui.Core;
 using DemoCenter.Maui.Demo;
 
 namespace DemoCenter.Maui.Views {
-    public partial class CalendarView : AdaptivePage {
+    public partial class CalendarView : DemoPage {
         public CalendarView() {
             AddResources();
             InitializeComponent();
             ViewModel = new CalendarViewModel();
             BindingContext = ViewModel;
-            OrientationChanged += OnOrientationChanged;
+            ON.OrientationChanged(this, x => x.OnOrientationChanged());
         }
 
         void AddResources() {
@@ -53,8 +53,8 @@ namespace DemoCenter.Maui.Views {
             e.TextColor = textColor;
         }
 
-        void OnOrientationChanged(object sender, EventArgs e) {
-            DXDockLayout.SetDock(calendar, (Orientation == PageOrientation.Portrait) ? Dock.Top : Dock.Left);
+        void OnOrientationChanged() {
+            DXDockLayout.SetDock(calendar, ON.Orientation(Dock.Top, Dock.Left));
             ViewModel.IsHolidaysAndObservancesListVisible = false;
             ViewModel.IsHolidaysAndObservancesListVisible = true;
         }

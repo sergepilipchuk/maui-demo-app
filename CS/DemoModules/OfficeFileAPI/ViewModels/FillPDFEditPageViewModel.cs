@@ -1,5 +1,5 @@
-using DevExpress.Maui.Core;
 using DevExpress.Maui.Editors;
+using DevExpress.Maui.Mvvm;
 using DevExpress.Pdf;
 using Microsoft.Maui.Controls;
 using System;
@@ -10,7 +10,7 @@ using System.Windows.Input;
 namespace DemoCenter.Maui.DemoModules.OfficeFileAPI.ViewModels;
 
 [QueryProperty(nameof(Document), "Document")]
-public class FillPDFEditPageViewModel : BindableBase {
+public class FillPDFEditPageViewModel : DXObservableObject {
     #region fields
     PdfDocumentProcessor CurrentDocumentProcessor;
     string document;
@@ -24,7 +24,7 @@ public class FillPDFEditPageViewModel : BindableBase {
         }
         set {
             document = value;
-            RaisePropertyChanged();
+            OnPropertyChanged();
             if (document != null)
                 LoadForms();
         }
@@ -40,7 +40,7 @@ public class FillPDFEditPageViewModel : BindableBase {
         }
         set {
             editedObject = value;
-            RaisePropertyChanged();
+            OnPropertyChanged();
         }
     }
     public List<EditedItemModel> Properties {
@@ -49,7 +49,7 @@ public class FillPDFEditPageViewModel : BindableBase {
         }
         set {
             properties = value;
-            RaisePropertyChanged();
+            OnPropertyChanged();
         }
     }
     #endregion properties
@@ -70,10 +70,10 @@ public class FillPDFEditPageViewModel : BindableBase {
                                     PdfTextFormFieldFacade textFieldFacade = (PdfTextFormFieldFacade)fieldFacade;
 
                                     DateTime hintDate;
-                                    if (DateTime.TryParse(textFieldFacade.Field.DefaultText, out hintDate)) {
+                                    if (DateTime.TryParse(textFieldFacade.Field.Text, out hintDate)) {
                                         newEditedProperties.Add(new DateEditedItemModel(fieldFacade.FullName, textFieldFacade.Required));
                                         DateTime valueDate;
-                                        if (DateTime.TryParse(textFieldFacade.Field.DefaultText, out valueDate))
+                                        if (DateTime.TryParse(textFieldFacade.Field.Text, out valueDate))
                                             return (DateTime?)valueDate;
                                         return default(DateTime);
                                     } else if (!string.IsNullOrEmpty(textFieldFacade.Field.DefaultText) && textFieldFacade.Field.DefaultText.All(c => c == '0')) {
@@ -91,10 +91,10 @@ public class FillPDFEditPageViewModel : BindableBase {
                                     return comboBoxFieldFacade.Value ?? string.Empty;
                                 } else if (fieldFacade.Type == PdfFormFieldType.RadioGroup) {
                                     PdfRadioGroupFormFieldFacade radioGroupFormFieldFacade = (PdfRadioGroupFormFieldFacade)fieldFacade;
-                                    var comboBoxSource = radioGroupFormFieldFacade.Items.Select(item => item.Value);
+                                    var comboBoxSource = radioGroupFormFieldFacade.Items.Select(item => item.DisplayText);
                                     ComboBoxEditedItemModel comboBoxEditedItemModel = new ComboBoxEditedItemModel(fieldFacade.FullName, radioGroupFormFieldFacade.Required, comboBoxSource, DropDownShowMode.Popup);
                                     newEditedProperties.Add(comboBoxEditedItemModel);
-                                    return radioGroupFormFieldFacade.Value ?? string.Empty;
+                                    return radioGroupFormFieldFacade.Items.Where(x => x.Value == radioGroupFormFieldFacade.Value).FirstOrDefault().DisplayText ?? string.Empty;
                                 }
                                 return null;
                             });
@@ -115,7 +115,7 @@ public class FillPDFEditPageViewModel : BindableBase {
                     break;
                 }
                 case PdfFormFieldType.RadioGroup: {
-                    ((PdfRadioGroupFormFieldFacade)field).Value = (string)keyPair.Value;
+                    ((PdfRadioGroupFormFieldFacade)field).Value = ((PdfRadioGroupFormFieldFacade)field).Items.Where(x => x.DisplayText == (string)keyPair.Value).FirstOrDefault().Value;
                     break;
                 }
             }
@@ -127,7 +127,7 @@ public class FillPDFEditPageViewModel : BindableBase {
     }
 }
 
-public class EditedItemModel : BindableBase {
+public class EditedItemModel : DXObservableObject {
     public EditedItemModel(string propertyName, bool isRequired) {
         PropertyName = propertyName;
         IsRequired = isRequired;

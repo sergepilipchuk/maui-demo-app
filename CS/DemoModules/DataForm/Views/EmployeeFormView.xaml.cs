@@ -1,11 +1,11 @@
-﻿using System;
-using DemoCenter.Maui.Demo;
+﻿using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.DemoModules.DataForm.ViewModels;
+using DevExpress.Maui.Core;
 using Microsoft.Maui;
 using Microsoft.Maui.Devices;
 
 namespace DemoCenter.Maui.Views {
-    public partial class EmployeeFormView : AdaptivePage {
+    public partial class EmployeeFormView : DemoPage {
         readonly EmployeeFormViewModel viewModel;
 
         public EmployeeFormView() {
@@ -13,7 +13,7 @@ namespace DemoCenter.Maui.Views {
             InitializeComponent();
             this.viewModel = new EmployeeFormViewModel();
             BindingContext = this.viewModel;
-            OrientationChanged += OnOrientationChanged;
+            ON.OrientationChanged(this, x => x.OnOrientationChanged());
         }
 
         void AddResources() {
@@ -32,8 +32,8 @@ namespace DemoCenter.Maui.Views {
             }
         }
 
-        void OnOrientationChanged(object sender, EventArgs e) {
-            bool isVertical = Orientation == PageOrientation.Portrait;
+        void OnOrientationChanged() {
+            bool isVertical = ON.Orientation(true, false);
 
             if (isVertical && DeviceInfo.Idiom == DeviceIdiom.Phone) {
                 this.photoContainer.Margin = new Thickness(0, 0, 0, 0);

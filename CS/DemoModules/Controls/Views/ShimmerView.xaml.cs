@@ -1,7 +1,7 @@
 using DemoCenter.Maui.Demo;
 
 namespace DemoCenter.Maui.Views;
-public partial class ShimmerView : AdaptivePage {
+public partial class ShimmerView : DemoPage {
     private ShimmerViewModel dataModel;
 
     public ShimmerView() {

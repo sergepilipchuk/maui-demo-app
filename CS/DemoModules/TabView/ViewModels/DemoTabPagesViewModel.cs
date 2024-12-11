@@ -6,6 +6,7 @@ using DemoCenter.Maui.Data;
 using DemoCenter.Maui.DemoModules.Grid.Data;
 using DevExpress.Maui.Core.Internal;
 using Microsoft.Maui.Graphics;
+using EmployeeItem = DemoCenter.Maui.DemoModules.Grid.Data.Employee;
 
 namespace DemoCenter.Maui.ViewModels {
     public class DemoTabPagesViewModel : NavigationViewModelBase {
@@ -80,6 +81,13 @@ namespace DemoCenter.Maui.ViewModels {
             Photo = customer.Photo;
             Email = customer.Email;
             BirthDate = customer.BirthDate;
+        }
+        public PhoneContact(EmployeeItem employee) : base(employee.FullName) {
+            Id = employee.Id;
+            Phone = employee.Phone;
+            Photo = employee.Image;
+            Email = employee.EmailAddress;
+            BirthDate = employee.BirthDate;
         }
         public bool HasPhoto { get; } = new Random().Next(0, 18) % 3 == 0;
         public bool Favorite { get; set; }

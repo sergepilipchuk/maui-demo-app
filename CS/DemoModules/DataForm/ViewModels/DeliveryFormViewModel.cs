@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.DataForm;
 
@@ -118,20 +117,19 @@ namespace DemoCenter.Maui.DemoModules.DataForm.ViewModels {
             { nameof(DeliveryInfo.DeliveryTimeTo), false },
         };
 
-        bool isVertical = true;
+        bool IsVertical { get; set; } = true;
 
-        public void Rotate(DataFormView dataForm, PageOrientation orientation) {
-            var newIsVertical = (orientation == PageOrientation.Portrait);
-            if (newIsVertical != isVertical) {
+        public void Rotate(DataFormView dataForm, bool isVertical) {
+            if (isVertical != IsVertical) {
                 if (dataForm.Items != null) {
-                    isVertical = newIsVertical;
+                    IsVertical = isVertical;
                     foreach (KeyValuePair<string, bool> fieldName in fieldNamesToReorder) {
                         DataFormItem item = dataForm.Items.FirstOrDefault(i => i.FieldName == fieldName.Key);
-                        int modifier = newIsVertical ? 1 : -1;
+                        int modifier = IsVertical ? 1 : -1;
                         if (item != null) {
                             item.RowOrder += modifier;
                             if (fieldName.Value)
-                                item.IsLabelVisible = newIsVertical;
+                                item.IsLabelVisible = IsVertical;
                         }
                     }
                 }

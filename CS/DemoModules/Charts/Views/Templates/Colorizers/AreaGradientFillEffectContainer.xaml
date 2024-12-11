@@ -38,7 +38,7 @@
                 <dx:ChartView.AxisX>
                     <dx:DateTimeAxisX>
                         <dx:DateTimeAxisX.Range>
-                            <dx:DateTimeRange SideMargin="0" VisualMin="11/10/2019" VisualMax="02/08/2020" />
+                            <dx:DateRange SideMargin="0" VisualMin="11/10/2019" VisualMax="02/08/2020" />
                         </dx:DateTimeAxisX.Range>
                         <dx:DateTimeAxisX.Style>
                             <dx:AxisStyle MajorTickmarksVisible="True" MinorTickmarksVisible="True"/>

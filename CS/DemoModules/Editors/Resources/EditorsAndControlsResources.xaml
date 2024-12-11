@@ -35,7 +35,6 @@
 
     <Style x:Key="ComboBoxStyleBase" TargetType="dx:ComboBoxEdit">
         <Setter Property="Margin" Value="0"/>
-        <Setter Property="BoxPadding" Value="12,10,12,6"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FocusedBorderThickness" Value="0"/>
         <Setter Property="DisabledBorderThickness" Value="0"/>

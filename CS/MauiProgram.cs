@@ -23,8 +23,15 @@ namespace DemoCenter.Maui {
                 .UseDevExpressCollectionView()
                 .UseDevExpressControls()
                 .UseDevExpressDataGrid()
+#if PaidDemoModules
+                .UseDevExpressDataGridExport()
+#endif
                 .UseDevExpressEditors()
                 .UseDevExpressGauges()
+#if PaidDemoModules
+                .UseDevExpressHtmlEditor()
+                .UseDevExpressPdf()
+#endif
                 .UseDevExpressScheduler()
                 .UseDevExpressTreeView()
                 .UseMauiCommunityToolkit()
@@ -33,9 +40,6 @@ namespace DemoCenter.Maui {
 #endif
 #if PaidDemoModules
         .UseSkiaSharp()
-        .UseDevExpressDataGridExport()
-        .UseDevExpressHtmlEditor()
-        .UseDevExpressPdf()
 #endif
                 .ConfigureMauiHandlers(handlers => {
                     handlers.AddHandler<Shell, CustomShellRenderer>();

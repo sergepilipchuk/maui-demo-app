@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.DataForm;
 using Microsoft.Maui.Controls;
@@ -23,15 +22,14 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             { nameof(ApplicationInfo.Version), 1 },
         };
 
-        bool isVertical = true;
+        bool IsVertical { get; set; } = true;
 
-        public void Rotate(DataFormView dataForm, PageOrientation orientation) {
-            var newIsVertical = (orientation == PageOrientation.Portrait);
-            if (newIsVertical == isVertical || dataForm.Items == null)
+        public void Rotate(DataFormView dataForm, bool isVertical) {
+            if (isVertical == IsVertical || dataForm.Items == null)
                 return;
 
-            isVertical = newIsVertical;
-            var itemPositionPair = isVertical ? verticalFieldNamesToRowOrder : horizontalFieldNamesToRowOrder;
+            IsVertical = isVertical;
+            var itemPositionPair = IsVertical ? verticalFieldNamesToRowOrder : horizontalFieldNamesToRowOrder;
             var dataFormItemsToReorder = dataForm.Items.Where(item => itemPositionPair.ContainsKey(item.FieldName) || item.FieldName == nameof(ApplicationInfo.AppIcon));
             foreach (var item in dataFormItemsToReorder) {
                 if (item.FieldName == nameof(ApplicationInfo.AppIcon))
@@ -42,7 +40,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         }
 
         void SetPhotoItemProperties(DataFormItem item) {
-            item.RowSpan = isVertical ? 1 : horizontalFieldNamesToRowOrder.Count;
+            item.RowSpan = IsVertical ? 1 : horizontalFieldNamesToRowOrder.Count;
         }
     }
 

@@ -20,7 +20,6 @@ namespace DemoCenter.Maui.Data {
                     Description = "Demonstrates how to emulate equalizer UI with the help of DevExpress DXSlider and DXRangeSlider controls. These controls allow you to specify custom value ranges and change track orientation. You can customize the appearance of the track, thumbs, and tick marks.",
                     Module = typeof(SlidersView),
                     Icon = "equalizer",
-                    DemoItemStatus = DemoItemStatus.New,
                 },
 #if PaidDemoModules
                 new DemoItem() {

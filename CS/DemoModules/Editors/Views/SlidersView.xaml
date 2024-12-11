@@ -34,7 +34,7 @@
                 <dx:DXStackLayout dx:DXDockLayout.Dock="Top" Orientation="Vertical" ItemAlignment="SpaceBetween" ItemSpacing="{dx:OnDisplaySize ExtraSmall='16', Small='32'}">
                     <dx:DXDockLayout dx:DXDockLayout.Dock="Top" VerticalSpacing="8">
                         <Label dx:DXDockLayout.Dock="Top" Text="Mode" FontAttributes="Bold" VerticalTextAlignment="Center"/>
-                        <dx:ComboBoxEdit x:Name="modeComboBox" dx:DXDockLayout.Dock="Top" HeightRequest="48" />
+                        <dx:ComboBoxEdit x:Name="modeComboBox" dx:DXDockLayout.Dock="Top" />
                     </dx:DXDockLayout>
 
                     <dx:DXDockLayout dx:DXDockLayout.Dock="Top" VerticalSpacing="8">

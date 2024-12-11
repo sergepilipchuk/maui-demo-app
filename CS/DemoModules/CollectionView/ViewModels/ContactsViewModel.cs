@@ -19,8 +19,8 @@ namespace DemoCenter.Maui.ViewModels {
 
         public ContactsViewModel() {
             this.random = new Random();
-            GridOrdersRepository repository = new GridOrdersRepository();
-            IList<PhoneContact> customersList = repository.Customers.ToList().ConvertAll((customer) => new PhoneContact(customer));
+            EmployeesRepository repository = new EmployeesRepository();
+            IList<PhoneContact> customersList = repository.Employees.ToList().ConvertAll(employee => new PhoneContact(employee));
 
             GenerateCallList(customersList);
         }

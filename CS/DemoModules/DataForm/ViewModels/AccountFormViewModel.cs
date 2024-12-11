@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.DataForm;
 
@@ -52,14 +51,13 @@ namespace DemoCenter.Maui.DemoModules.DataForm.ViewModels {
             nameof(AccountInfo.Password),
         };
 
-        public void Rotate(DataFormView dataForm, PageOrientation orientation) {
-            var newIsVertical = (orientation == PageOrientation.Portrait);
-            if (newIsVertical != IsVertical) {
+        public void Rotate(DataFormView dataForm, bool isVertical) {
+            if (isVertical != IsVertical) {
                 if (dataForm.Items != null) {
-                    IsVertical = newIsVertical;
+                    IsVertical = isVertical;
                     foreach (string fieldName in fieldNamesToReorder) {
                         DataFormItem item = dataForm.Items.FirstOrDefault(i => i.FieldName == fieldName);
-                        int modifier = newIsVertical ? 1 : -1;
+                        int modifier = isVertical ? 1 : -1;
                         if (item != null)
                             item.RowOrder += modifier;
                     }

@@ -1,0 +1,60 @@
+<demo:DemoPage xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
+    xmlns:common="clr-namespace:DemoCenter.Maui"
+    xmlns:viewmodels="clr-namespace:DemoCenter.Maui.ViewModels"
+    x:DataType="viewmodels:OnDemandDataLoadingViewModel"
+    x:Class="DemoCenter.Maui.Views.OnDemandDataLoading">
+    <demo:DemoPage.Resources>
+        <ResourceDictionary>
+            <common:VariableMultiValueConverterExtension x:Key="IsBusyConverter" ConditionType="Any" />
+        </ResourceDictionary>
+    </demo:DemoPage.Resources>
+    <demo:DemoPage.BindingContext>
+        <viewmodels:OnDemandDataLoadingViewModel />
+    </demo:DemoPage.BindingContext>
+    <demo:DemoPage.ToolbarItems>
+        <ToolbarItem IconImageSource="{Binding DelayButtonImageSource}" Command="{Binding ToggleDelayCommand}" />
+    </demo:DemoPage.ToolbarItems>
+    <Grid RowDefinitions="*">
+        <dx:DayView x:Name="dayView" Tap="DayView_OnTap">
+            <dx:DayView.DataStorage>
+                <dx:SchedulerDataStorage x:Name="storage">
+                    <dx:SchedulerDataStorage.DataSource>
+                        <dx:DataSource FetchRange="1:0:0:0">
+                            <dx:DataSource.AppointmentMappings>
+                                <dx:AppointmentMappings
+                                    Description="Description"
+                                    Id="Id"
+                                    LabelId="Label"
+                                    StatusId="Status"
+                                    RecurrenceInfo="RecurrenceInfo"
+                                    Start="Start" End="End"
+                                    QueryStart="QueryStart" QueryEnd="QueryEnd"
+                                    Subject="Subject"
+                                    Location="Location"
+                                    AllDay="AllDay"
+                                    Reminder="ReminderInfo"
+                                    Type="AppointmentType"
+                                    TimeZoneId="TimeZoneId" />
+                            </dx:DataSource.AppointmentMappings>
+                        </dx:DataSource>
+                    </dx:SchedulerDataStorage.DataSource>
+                </dx:SchedulerDataStorage>
+            </dx:DayView.DataStorage>
+        </dx:DayView>
+        <ActivityIndicator Grid.RowSpan="1"
+            WidthRequest="40"
+            HeightRequest="40"
+            IsVisible="true"
+            Color="{dx:ThemeColor Key=Primary}">
+            <ActivityIndicator.IsRunning>
+                <MultiBinding Converter="{StaticResource IsBusyConverter}">
+                    <Binding Path="IsBusy"/>
+                    <Binding Path="IsDataLoading" Source="{x:Reference Name=dayView}" Mode="TwoWay"/>
+                </MultiBinding>
+            </ActivityIndicator.IsRunning>
+        </ActivityIndicator>
+    </Grid>
+</demo:DemoPage>

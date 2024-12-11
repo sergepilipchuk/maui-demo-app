@@ -6,6 +6,7 @@
                xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
                ios:Page.UseSafeArea="False"
                xmlns:local="clr-namespace:DemoCenter.Maui.DemoModules.CollectionView.Views"
+               HideSoftInputOnTapped="True"
                BackgroundColor="{dx:ThemeColor Surface}">
 
     <Grid>

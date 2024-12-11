@@ -22,10 +22,10 @@
                             <Setter Property="WidthRequest" Value="{OnPlatform iOS=42, Android=50}"/>
                             <Setter Property="HeightRequest" Value="{OnPlatform iOS=42, Android=50}"/>
                             <Style.Triggers>
-                                <DataTrigger TargetType="dx:DXBorder" Binding="{Binding IsChecked}" Value="False">
+                                <DataTrigger TargetType="dx:DXBorder" Binding="{Binding IsChecked, x:DataType={x:Null}}" Value="False">
                                     <Setter Property="BorderColor" Value="{dx:ThemeColor OutlineVariant}"/>
                                 </DataTrigger>
-                                <DataTrigger TargetType="dx:DXBorder" Binding="{Binding IsChecked}" Value="True">
+                                <DataTrigger TargetType="dx:DXBorder" Binding="{Binding IsChecked, x:DataType={x:Null}}" Value="True">
                                     <Setter Property="BorderColor" Value="{dx:ThemeColor Primary}"/>
                                 </DataTrigger>
                             </Style.Triggers>

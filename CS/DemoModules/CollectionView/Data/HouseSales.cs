@@ -26,7 +26,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Data {
         public string City { get; set; }
         public int Beds { get; set; }
         public int Baths { get; set; }
-        public double HouseSize { get; set; }
+        public decimal HouseSize { get; set; }
         public double LotSize { get; set; }
         public decimal Price { get; set; }
         public int YearBuilt { get; set; }

@@ -35,7 +35,6 @@ namespace DemoCenter.Maui.Data {
                 new DemoItem() {
                     Title = "Slide View",
                     Description = "Shows the SlideView control that allows users to navigate between slides. Each slide in this demo is a flash card that highlights a SlideView property. You can toggle the switch at the bottom to see how the property affects the control.",
-                    DemoItemStatus = DemoItemStatus.New,
                     Module = typeof(SlideViewDemo),
                     Icon = "slideview"
                 },

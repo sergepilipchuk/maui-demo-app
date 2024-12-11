@@ -138,16 +138,16 @@
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Help Text" Style="{StaticResource TextStyle}"/>
-                            <Switch IsToggled="{Binding ShowHelpText}" Style="{DynamicResource SwitchStyle}"/>
+                            <dx:DXSwitch IsChecked="{Binding ShowHelpText}" Style="{DynamicResource SwitchStyle}"/>
                         </StackLayout>
                     </StackLayout>
 
                     <Grid ColumnSpacing="8" Margin="16" ColumnDefinitions="0.5*, 0.5*">
-                        <dx:DXButton 
+                        <dx:DXButton
                             Content="Toggle Error"
                             Command="{Binding ToggleErrorCommand}"
                             HorizontalOptions="FillAndExpand" />
-                        <dx:DXButton 
+                        <dx:DXButton
                             Content="Reset to Default"
                             Command="{Binding ResetToDefaultCommand}"
                             HorizontalOptions="FillAndExpand"

@@ -1,12 +1,10 @@
 ﻿using System;
-using DemoCenter.Maui.Demo;
-using DevExpress.Maui.Core;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 
 namespace DemoCenter.Maui.Views {
-    public partial class HtmlEditView : Demo.AdaptivePage {
+    public partial class HtmlEditView : Demo.DemoPage {
         public HtmlEditView() {
             InitializeComponent();
             this.edit.Focused += OnFocused;
@@ -78,10 +76,6 @@ namespace DemoCenter.Maui.Views {
                 ToolbarItems.Remove(UndoItem);
                 ToolbarItems.Remove(RedoItem);
             });
-        }
-
-        void OnOrientationChanged(object sender, EventArgs e) {
-            this.root.FitKeyboardAreaToContent = Orientation == PageOrientation.Portrait ? KeyboardAreaSizeMode.SizeToContent : KeyboardAreaSizeMode.SizeToKeyboard;
         }
     }
 }
