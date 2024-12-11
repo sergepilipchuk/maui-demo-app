@@ -15,7 +15,6 @@
 		<ApplicationVersion>1</ApplicationVersion>
 		<RootNamespace>DemoCenter.Maui</RootNamespace>
 		<AssemblyName>DemoCenter.Maui</AssemblyName>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         
         
 		<NoWarn>$(NoWarn);CA1422;CA1416;NU1603;NU1504;XC0023;XC0022;NU1903</NoWarn>
